@@ -1,0 +1,85 @@
+---
+output: html_document
+runtime: shiny
+---
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112321839-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112321839-1');
+  
+</script>
+
+<center>
+##Explore scRNA-seq expression data from Hook, _et al_., 2017
+</center>
+***
+
+<div class="row">
+
+<div class="col-md-6 text-center">
+####Instructions:  
+Enter the symbol of your favorite mouse gene below to see the expression of that gene in each population of cells indentified in Hook, _et al_., 2017. If the plot is not produced for a gene, the gene did not pass quality control filtering for the dataset in its entirety.   
+
+Last code update: `r Sys.Date()` 
+
+</div>
+
+<div class="col-md-6 text-center">
+####More information:  
+For more infomation on this project, please see: https://pwh124.github.io/sc-da-parkinsons/
+
+**bioRxiv Citation**: Single-cell RNA-seq of mouse dopaminergic neurons informs candidate gene selection for sporadic Parkinson's disease. Paul W. Hook, Sarah A. McClymont, Gabrielle H. Cannon, William D. Law, A. Jennifer Morton, Loyal A. Goff, Andrew S. McCallion. bioRxiv 148049; doi: https://doi.org/10.1101/148049 
+
+</div></div>
+
+***  
+
+```{r init, message=FALSE, warning=FALSE,echo=FALSE}
+###Setting important directories. Also loading important libraries and custom functions for analysis.
+source('init.R')
+```
+
+```{r loading data needed, echo=FALSE,message=FALSE,warning=FALSE}
+###Loading the cds data needed to produce figures
+dat.filter <- readRDS("dat.filter.final.Rds")
+color <- c("#F6937A","#882F1C","#BF1F36","#C2B280","#F2C318","#E790AC","#F18421","#0168A5","#848483","#A4CAEB","#885793","#008957","#222222")
+```
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+textInput("marker_genes", label = "Genes (comma-separated):",
+          value=NULL,
+          placeholder="e.g. Cdh13,Pantr1"
+          )
+```
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+#Plotting expression levels
+#markers
+markers.base<-reactive({
+  if(input$marker_genes=="")
+      markers<-NULL
+  else
+      markers<-capwords(str_trim(unlist(str_split(input$marker_genes,","))),strict=TRUE)
+  return(markers)
+})
+
+expressionBarplot.base<-reactive({
+  req(length(markers.base())>=1)
+  myBoxplot.subset(dat.filter, markers = markers.base(), logMode = T) + 
+    scale_fill_manual(values = color, name = "Subset Cluster") + xlab("Subset Cluster") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1, family="Helvetica",face="bold", size=12),
+        legend.position = "none",
+        axis.text.y = element_text(family="Helvetica",face="bold",size=12),
+        axis.title.y = element_text(family="Helvetica",face="bold",size=14,margin=margin(r=20)),
+        strip.text = element_text(family="Helvetica",face="bold.italic",size=16),
+        panel.spacing.x = unit(2,"lines"),
+        axis.title.x = element_text(family="Helvetica",face="bold",size=14,margin=margin(t=20)))
+})
+
+fillRow(renderPlot(expressionBarplot.base(),height = 500))
+```
+

@@ -1,0 +1,12 @@
+name: expressionshiny
+title:
+username:
+account: pwh124
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 254211
+bundleId: 1172200
+url: https://pwh124.shinyapps.io/expressionshiny/
+when: 1515689323.365
+asMultiple: FALSE
+asStatic: FALSE

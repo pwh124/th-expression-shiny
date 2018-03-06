@@ -14,7 +14,7 @@ runtime: shiny
 </script>
 
 <center>
-##Explore scRNA-seq expression data from Hook, _et al_., 2017
+##Explore scRNA-seq expression data from Hook, _et al_., 2018
 </center>
 ***
 
@@ -22,7 +22,7 @@ runtime: shiny
 
 <div class="col-md-6 text-center">
 ####Instructions:  
-Enter the symbol of your favorite mouse gene below to see the expression of that gene in each population of cells indentified in Hook, _et al_., 2017. If the plot is not produced for a gene, the gene did not pass quality control filtering for the dataset in its entirety.   
+Enter the symbol of your favorite mouse gene below to see the expression of that gene in each population of cells indentified in Hook, _et al_., 2018. If the plot is not produced for a gene, the gene did not pass quality control filtering for the dataset in its entirety.   
 
 Last code update: `r Sys.Date()` 
 
@@ -32,7 +32,9 @@ Last code update: `r Sys.Date()`
 ####More information:  
 For more infomation on this project, please see: https://pwh124.github.io/sc-da-parkinsons/
 
-**bioRxiv Citation**: Single-cell RNA-seq of mouse dopaminergic neurons informs candidate gene selection for sporadic Parkinson's disease. Paul W. Hook, Sarah A. McClymont, Gabrielle H. Cannon, William D. Law, A. Jennifer Morton, Loyal A. Goff, Andrew S. McCallion. bioRxiv 148049; doi: https://doi.org/10.1101/148049 
+**Citation**: **Hook, P.W.**, McClymont, S.A., Cannon, G.H., Law, W.D., Morton, A.J., Goff, L.A., and McCallion, A.S. (2018). Single-Cell RNA-Seq of Mouse Dopaminergic Neurons Informs Candidate Gene Selection for Sporadic Parkinson Disease. Am. J. Hum. Genet. 102, 427-446. doi: <a href="http://dx.doi.org/10.1016/j.ajhg.2018.02.001" target="_blank">http://dx.doi.org/10.1016/j.ajhg.2018.02.001</a>
+
+If DOI links do not work yet, find the paper <a href="http://www.cell.com/ajhg/fulltext/S0002-9297(18)30046-6" target="_blank">here</a>  
 
 </div></div>
 

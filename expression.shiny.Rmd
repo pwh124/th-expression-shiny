@@ -24,7 +24,8 @@ runtime: shiny
 ####Instructions:  
 Enter the symbol of your favorite mouse gene below to see the expression of that gene in each population of cells indentified in Hook, _et al_., 2018. If the plot is not produced for a gene, the gene did not pass quality control filtering for the dataset in its entirety.   
 
-Last code update: `r Sys.Date()` 
+Last code update: Mar 6, 2018
+Last app refresh: October 8, 2024
 
 </div>
 
